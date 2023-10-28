@@ -1,0 +1,108 @@
+.card {
+  border: 2px solid blueviolet;
+  padding: 2rem;
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.card:last-of-type {
+  margin-bottom: 5rem;
+}
+
+h2,
+.container,
+.btn-container {
+  margin-bottom: 2rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+input[type="number"],
+button {
+  height: 2.5rem;
+  width: 100%;
+  padding: .5rem;
+  font-size: 1.1rem;
+  color: grey;
+  margin: 0 auto;
+}
+
+input[type="number"] {
+  border: 1px solid grey;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border: 2px solid crimson;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background-color: blueviolet;
+  margin-top: 1rem;
+  border: none;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+button:hover {
+  font-size: 1.1rem;
+  background-color: #581B91;
+}
+
+button:focus {
+  outline: none;
+  font-size: 1rem;
+  width: 90%;
+}
+
+table {
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  text-align: right;
+  border-bottom: 2px solid blueviolet;
+}
+
+th {
+  border-bottom: 2px solid blueviolet;
+  text-align: center;
+}
+
+td:not(:last-of-type),
+th:not(:last-of-type) {
+  padding: .5rem .8rem .5rem 0;
+}
+
+.left-align {
+  text-align: left
+}
+
+.highlight {
+  color: crimson;
+}
+
+.arrow {
+  position: relative;
+  top: -.7rem;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  max-width: 25rem;
+  margin: 0 auto;
+}
