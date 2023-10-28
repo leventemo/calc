@@ -1,108 +1,112 @@
-<div class="card">
-  <h2>Eladáskor</h2>
-  <div class="container">
-    <label>Vételár</label>
-    <input type="number" [value]="soldFor" step="100000" (input)="onChangeSoldFor($event)" />
+<div class="page-container">
+  <div class="card">
+    <h2>Eladáskor</h2>
+    <div class="container">
+      <label>Vételár</label>
+      <input type="number" [value]="soldFor" step="100000" (input)="onChangeSoldFor($event)" />
+    </div>
+
+    <div class="container">
+      <label>Közvetítési díj</label>
+      <input type="number" [value]="agentsFee" step="100000" (input)="onChangeAgentsFee($event)" />
+    </div>
+
+    <div class="btn-container">
+      <button (click)="calculate($event)">Számol</button>
+    </div>
+    <h3>vételár - közvetítési díj = <span class="highlight">{{ sumAfterAgent | currency:'HUF':'symbol':'4.0-0':'hu'
+        }}</span></h3>
   </div>
 
-  <div class="container">
-    <label>Közvetítési díj</label>
-    <input type="number" [value]="agentsFee" step="100000" (input)="onChangeAgentsFee($event)" />
+  <div class="arrow">
+    <img src="assets/arrow.svg" alt="down-arrow icon">
   </div>
 
-  <div class="btn-container">
-    <button (click)="calculate($event)">Számol</button>
+  <div class="card">
+    <h2>Fenntartási költségek</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>1 hó</th>
+        <th>1 év</th>
+        <th>{{ elapsedTimeInMonths }} hó máig</th>
+      </tr>
+      <tr>
+        <td class="left-align">közös k.</td>
+        <td>{{ community.perMonth | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ community.perYear | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ community.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td class="left-align">biztosítás</td>
+        <td>{{ insurance.perMonth| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ insurance.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ insurance.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td class="left-align">víz-gáz</td>
+        <td>{{ gasAndWater.perMonth| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ gasAndWater.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ gasAndWater.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td class="left-align">összesen</td>
+        <td>{{ allExp.perMonth | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ allExp.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+        <td>{{ allExp.untilNow | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+      </tr>
+    </table>
+
+    <h3>fennmaradó - összkölts. máig = <span class="highlight"> {{ sumAfterExpenses |
+        currency:'HUF':'symbol':'4.0-0':'hu'
+        }}
+      </span></h3>
   </div>
-  <h3>vételár - közvetítési díj = <span class="highlight">{{ sumAfterAgent | currency:'HUF':'symbol':'4.0-0':'hu'
-      }}</span></h3>
-</div>
 
-<div class="arrow">
-  <img src="assets/arrow.svg" alt="down-arrow icon">
-</div>
+  <div class="arrow">
+    <img src="assets/arrow.svg" alt="down-arrow icon">
+  </div>
 
-<div class="card">
-  <h2>Fenntartási költségek</h2>
-  <table>
-    <tr>
-      <th></th>
-      <th>1 hó</th>
-      <th>1 év</th>
-      <th>{{ elapsedTimeInMonths }} hó máig</th>
-    </tr>
-    <tr>
-      <td class="left-align">közös k.</td>
-      <td>{{ community.perMonth | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ community.perYear | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ community.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td class="left-align">biztosítás</td>
-      <td>{{ insurance.perMonth| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ insurance.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ insurance.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td class="left-align">víz-gáz</td>
-      <td>{{ gasAndWater.perMonth| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ gasAndWater.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ gasAndWater.untilNow| currency:'HUF':'symbol':'4.0-0':'hu'
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td class="left-align">összesen</td>
-      <td>{{ allExp.perMonth | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ allExp.perYear| currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      <td>{{ allExp.untilNow | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-    </tr>
-  </table>
+  <div class="card">
+    <h2>Osztás</h2>
+    <table>
+      <tr>
+        <td class="left-align">fennmaradó / 6</td>
+        <td>{{ sumPerPerson | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+      </tr>
+      <tr>
+        <td class="left-align">15% szja</td>
+        <td> {{ taxPerParts | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+      </tr>
+    </table>
+    <h3>1 rész - szja = <span class="highlight">{{ sumPerPersonAfterTax | currency:'HUF':'symbol':'4.0-0':'hu' }}
+      </span>
+    </h3>
+  </div>
 
-  <h3>fennmaradó - összkölts. máig = <span class="highlight"> {{ sumAfterExpenses | currency:'HUF':'symbol':'4.0-0':'hu'
-      }}
-    </span></h3>
-</div>
+  <div class="arrow">
+    <img src="assets/arrow.svg" alt="down-arrow icon">
+  </div>
 
-<div class="arrow">
-  <img src="assets/arrow.svg" alt="down-arrow icon">
-</div>
-
-<div class="card">
-  <h2>Osztás</h2>
-  <table>
-    <tr>
-      <td class="left-align">fennmaradó / 6</td>
-      <td>{{ sumPerPerson | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-    </tr>
-    <tr>
-      <td class="left-align">15% szja</td>
-      <td> {{ taxPerParts | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-    </tr>
-  </table>
-  <h3>1 rész - szja = <span class="highlight">{{ sumPerPersonAfterTax | currency:'HUF':'symbol':'4.0-0':'hu' }} </span>
-  </h3>
-</div>
-
-<div class="arrow">
-  <img src="assets/arrow.svg" alt="down-arrow icon">
-</div>
-
-<div class="card">
-  <h2>Ajándékozás</h2>
-  <table>
-    <tr>
-      <td class="left-align">L. része / 4</td>
-      <td>{{ gift | currency:'HUF':'symbol':'4.0-0':'hu' }} </td>
-    </tr>
-    <tr>
-      <td class="left-align">9% illeték</td>
-      <td> {{ taxOnGift | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-    </tr>
-  </table>
-  <h3>L. része / 4 - illeték = <span class="highlight"> {{ giftAfterTax | currency:'HUF':'symbol':'4.0-0':'hu' }}
-    </span></h3>
+  <div class="card">
+    <h2>Ajándékozás</h2>
+    <table>
+      <tr>
+        <td class="left-align">L. része / 4</td>
+        <td>{{ gift | currency:'HUF':'symbol':'4.0-0':'hu' }} </td>
+      </tr>
+      <tr>
+        <td class="left-align">9% illeték</td>
+        <td> {{ taxOnGift | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
+      </tr>
+    </table>
+    <h3>L. része / 4 - illeték = <span class="highlight"> {{ giftAfterTax | currency:'HUF':'symbol':'4.0-0':'hu' }}
+      </span></h3>
+  </div>
 </div>

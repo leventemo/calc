@@ -2,6 +2,7 @@
 
 ## TODO:
 
+- [ ] responsivity
 - [ ] dark mode
 - [ ] add links
 - [ ] airport style counters
