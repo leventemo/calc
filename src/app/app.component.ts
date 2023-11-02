@@ -18,7 +18,7 @@ interface Expenses {
 })
 
 export class AppComponent {
-  title: string = 'calc';
+  title: string = 'Calc';
   soldFor: number = 18000000;
   agentsFee: number = 600000;
   sumAfterAgent: number = 0o0;
