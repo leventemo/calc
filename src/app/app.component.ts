@@ -81,7 +81,7 @@ export class AppComponent {
     this.setValuesToZero();
   }
 
-  calculate(event: Event) {
+  calculate(event: Event): void {
     const target = event.target as HTMLInputElement;
     setTimeout(() => {
       target.blur();
@@ -107,7 +107,7 @@ export class AppComponent {
 
   }
 
-  setValuesToZero() {
+  setValuesToZero(): void {
     this.community.untilNow = 0o0;
     this.insurance.untilNow = 0o0;
     this.gasAndWater.untilNow = 0o0;

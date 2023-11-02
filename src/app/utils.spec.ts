@@ -5,8 +5,9 @@ describe('Utils', () => {
     expect(new Utils()).toBeTruthy();
   });
 
-  it('should return an integer', () => {
+  it('should return a positive integer', () => {
     expect(Utils.getElapsedMonths(new Date('2021-09-01'), new Date())).toBeGreaterThan(0);
+    expect(Utils.getElapsedMonths(new Date('2021-09-01'), new Date()) % 1).toBe(0);
   });
 
   it('should calculate the correct number of months', () => {
