@@ -47,7 +47,7 @@ export class AppComponent {
 
   allExp: Expenses = {
     perMonth: this.community.perMonth + this.insurance.perMonth + this.gasAndWater.perMonth,
-    perYear: 0o0,
+    perYear: (this.community.perMonth + this.insurance.perMonth + this.gasAndWater.perMonth) * 12,
     untilNow: 0o0,
   }
 
