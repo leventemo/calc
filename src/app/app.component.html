@@ -91,23 +91,4 @@
     </h3>
   </div>
 
-  <div class="arrow">
-    <img src="assets/arrow.svg" alt="down-arrow icon">
-  </div>
-
-  <div class="card">
-    <h2>Ajándékozás</h2>
-    <table>
-      <tr>
-        <td class="left-align">L. része / 4</td>
-        <td>{{ gift | currency:'HUF':'symbol':'4.0-0':'hu' }} </td>
-      </tr>
-      <tr>
-        <td class="left-align">9% illeték</td>
-        <td> {{ taxOnGift | currency:'HUF':'symbol':'4.0-0':'hu' }}</td>
-      </tr>
-    </table>
-    <h3>L. része / 4 - illeték = <span class="highlight"> {{ giftAfterTax | currency:'HUF':'symbol':'4.0-0':'hu' }}
-      </span></h3>
-  </div>
 </div>
