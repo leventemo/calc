@@ -28,4 +28,8 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.title')?.textContent).toContain('Calc');
   });
+
+  it('should display the initial value of "0000" for all expenses', () => {
+    // see above: title
+  });
 });

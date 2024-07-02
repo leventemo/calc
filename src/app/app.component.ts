@@ -19,9 +19,7 @@ interface Expenses {
 
 export class AppComponent {
   title: string = 'Calc';
-  soldFor: number = 18000000;
-  agentsFee: number = 600000;
-  sumAfterAgent: number = 0o0;
+  soldFor: number = 17000000;
 
   startingDate: Date = new Date('2021-09-01');
   dateNow: Date = new Date();
@@ -71,23 +69,11 @@ export class AppComponent {
     this.setValuesToZero();
   }
 
-  onChangeAgentsFee(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const parsedValue = parseInt(target.value);
-
-    if (!isNaN(parsedValue)) {
-      this.agentsFee = parsedValue;
-    }
-    this.setValuesToZero();
-  }
-
   calculate(event: Event): void {
     const target = event.target as HTMLInputElement;
     setTimeout(() => {
       target.blur();
     }, 1000);
-
-    this.sumAfterAgent = this.soldFor - this.agentsFee
 
     this.dateNow = new Date();
     this.elapsedTimeInMonths = Utils.getElapsedMonths(this.startingDate, this.dateNow);
@@ -97,7 +83,7 @@ export class AppComponent {
     this.gasAndWater.untilNow = this.gasAndWater.perMonth * this.elapsedTimeInMonths;
     this.allExp.untilNow = this.allExp.perMonth * this.elapsedTimeInMonths;
 
-    this.sumAfterExpenses = this.sumAfterAgent - this.allExp.untilNow;
+    this.sumAfterExpenses = this.soldFor - this.allExp.untilNow;
     this.sumPerPerson = this.sumAfterExpenses / 6;
     this.taxPerParts = this.sumPerPerson * 0.15;
     this.sumPerPersonAfterTax = this.sumPerPerson - this.taxPerParts
