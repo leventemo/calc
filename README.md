@@ -1,11 +1,8 @@
 # Calc
 
-## TODO:
+This is a quick calculator for a specific use case using Angular. No further development is planned.
 
-- [ ] responsivity
-- [ ] dark mode
-- [ ] add links
-- [ ] airport style counters
+## Angular-generated info:
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
